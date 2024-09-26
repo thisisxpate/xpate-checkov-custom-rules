@@ -1,0 +1,10 @@
+---
+metadata:
+  name: "Check That All Resources Contain Proper Tags"
+  id: "CKV2_AWS_TAGS_1"
+  category: "GENERAL_SECURITY"
+definition:
+  cond_type: "attribute"
+  resource_types: "all"
+  attribute: "tags.env"
+  operator: "exists"

@@ -1,0 +1,11 @@
+---
+metadata:
+  name: "Check All SQS Queues Have Retention Set"
+  id: "CKV2_CUSTOM_AWS_SQS_MESSAGE_RETENTION_SECONDS"
+  category: "GENERAL_SECURITY"
+definition:
+  cond_type: "attribute"
+  resource_types:
+    - aws_sqs_queue
+  attribute: "message_retention_seconds"
+  operator: "exists"
