@@ -1,16 +1,18 @@
 ---
 metadata:
-  name: "Check All SQS Queues Have Redrive Policy"
+  name: "Check All Non-DLQ SQS Queues Have Redrive Policy"
   id: "CKV2_CUSTOM_AWS_SQS_REDRIVE_POLICY"
   category: "GENERAL_SECURITY"
 definition:
-  and:
+  or:
+    - cond_type: "attribute"
+      resource_types:
+        - aws_sqs_queue
+      attribute: "name"
+      operator: "ending_with"
+      value: "-dlq"
     - cond_type: "attribute"
       resource_types:
         - aws_sqs_queue
       attribute: "redrive_policy"
       operator: "exists"
-    - cond_type: "attribute"
-      attribute: "name"
-      operator: "not_contains"
-      value: "dlq"
