@@ -14,5 +14,11 @@ definition:
     - cond_type: "attribute"
       resource_types:
         - aws_sqs_queue
+      attribute: "name"
+      operator: "ending_with"
+      value: "-dlq.fifo"
+    - cond_type: "attribute"
+      resource_types:
+        - aws_sqs_queue
       attribute: "redrive_policy"
       operator: "exists"
